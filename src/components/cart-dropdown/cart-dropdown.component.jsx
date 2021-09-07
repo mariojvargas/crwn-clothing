@@ -3,7 +3,7 @@ import CartItem from '../cart-item/cart-item.component';
 import CustomButton from '../custom-button/custom-button.component';
 import './cart-dropdown.styles.scss';
 
-const Cart = ({ cartItems }) => (
+const CartDropDown = ({ cartItems }) => (
   <div className="cart-dropdown">
     <div className="cart-items">
       {cartItems.map((item) => (
@@ -18,4 +18,4 @@ const mapStateToProps = ({ cart: { cartItems } }) => ({
   cartItems,
 });
 
-export default connect(mapStateToProps)(Cart);
+export default connect(mapStateToProps)(CartDropDown);
