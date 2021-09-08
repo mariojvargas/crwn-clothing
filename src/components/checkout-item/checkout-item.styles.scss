@@ -23,7 +23,18 @@
   }
 
   .quantity {
-    padding-left: 20px;
+    display: flex;
+    gap: 10px;
+
+    .arrow {
+      cursor: pointer;
+      user-select: none;
+    }
+
+    .value {
+      // Added "gap" to .quantity instead of using margin
+      // margin: 0 10px;
+    }
   }
 
   .remove-button {
