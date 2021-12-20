@@ -12,6 +12,7 @@ import SignInAndSignUpPage from './pages/sign-in-and-sign-up/sign-in-and-sign-up
 import * as userActions from './redux/user/user.actions';
 import { selectCurrentUser } from './redux/user/user.selectors';
 
+// TODO: Final version of project converted to styled components: https://github.com/zhangmyihua/lesson-26-complete
 class App extends React.Component {
   unsubscribeFromAuth = null;
 
