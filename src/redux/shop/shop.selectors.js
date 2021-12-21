@@ -3,7 +3,7 @@ import { createSelector } from 'reselect';
 
 const selectShop = ({ shop }) => shop;
 
-export const selectCollections = createSelector(selectShop, ({ collections }) => collections);
+export const selectCollections = createSelector(selectShop, (shop) => shop.collections);
 
 // This selector becomes a curried function
 export const selectCollection = memoize((collectionName) =>
@@ -17,3 +17,8 @@ export const selectCollectionsForPreview = createSelector([selectCollections], (
 );
 
 export const selectIsCollectionFetching = createSelector([selectShop], (shop) => shop.isFetching);
+
+export const selectIsCollectionsLoaded = createSelector(
+  [selectCollections],
+  (collections) => !!collections
+);
