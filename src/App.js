@@ -9,10 +9,12 @@ import CheckoutPage from './pages/checkout/checkout.component';
 import HomePage from './pages/homepage/homepage.component';
 import ShopPage from './pages/shop/shop.component';
 import SignInAndSignUpPage from './pages/sign-in-and-sign-up/sign-in-and-sign-up.component';
+import { selectCollectionsForPreview } from './redux/shop/shop.selectors';
 import * as userActions from './redux/user/user.actions';
 import { selectCurrentUser } from './redux/user/user.selectors';
 
 // TODO: Final version of project converted to styled components: https://github.com/zhangmyihua/lesson-26-complete
+
 class App extends React.Component {
   unsubscribeFromAuth = null;
 
@@ -29,9 +31,9 @@ class App extends React.Component {
             ...snapshot.data(),
           });
         });
-      } else {
-        setCurrentUser(userAuth);
       }
+
+      setCurrentUser(userAuth);
     });
   }
 
@@ -60,6 +62,7 @@ class App extends React.Component {
 
 const mapStateToProps = createStructuredSelector({
   currentUser: selectCurrentUser,
+  collections: selectCollectionsForPreview,
 });
 
 const mapDispatchToProps = (dispatch) => ({

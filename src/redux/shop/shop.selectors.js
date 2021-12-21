@@ -7,9 +7,11 @@ export const selectCollections = createSelector(selectShop, ({ collections }) =>
 
 // This selector becomes a curried function
 export const selectCollection = memoize((collectionName) =>
-  createSelector([selectCollections], (collections) => collections[collectionName])
+  createSelector([selectCollections], (collections) =>
+    collections ? collections[collectionName] : null
+  )
 );
 
 export const selectCollectionsForPreview = createSelector([selectCollections], (collections) =>
-  Object.keys(collections).map((key) => collections[key])
+  collections ? Object.keys(collections).map((key) => collections[key]) : []
 );
