@@ -9,11 +9,17 @@ import HomePage from './pages/homepage/homepage.component';
 import ShopPage from './pages/shop/shop.component';
 import SignInAndSignUpPage from './pages/sign-in-and-sign-up/sign-in-and-sign-up.component';
 import { selectCollectionsForPreview } from './redux/shop/shop.selectors';
+import * as userActions from './redux/user/user.actions';
 import { selectCurrentUser } from './redux/user/user.selectors';
-
 // TODO: Final version of project converted to styled components: https://github.com/zhangmyihua/lesson-26-complete
 
 class App extends React.Component {
+  componentDidMount() {
+    const { checkUserSession } = this.props;
+
+    checkUserSession();
+  }
+
   render() {
     return (
       <div>
@@ -38,4 +44,8 @@ const mapStateToProps = createStructuredSelector({
   collections: selectCollectionsForPreview,
 });
 
-export default connect(mapStateToProps)(App);
+const mapDispatchToProps = (dispatch) => ({
+  checkUserSession: () => dispatch(userActions.checkUserSession()),
+});
+
+export default connect(mapStateToProps, mapDispatchToProps)(App);
