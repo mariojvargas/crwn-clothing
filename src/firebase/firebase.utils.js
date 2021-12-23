@@ -53,19 +53,19 @@ export const analytics = getAnalytics(app);
 export const auth = firebase.auth();
 export const firestore = firebase.firestore();
 
-const provider = new firebase.auth.GoogleAuthProvider();
-provider.setCustomParameters({ prompt: 'select_account' });
+export const googleProvider = new firebase.auth.GoogleAuthProvider();
+googleProvider.setCustomParameters({ prompt: 'select_account' });
 
-export const signInWithGoogle = async () => {
-  try {
-    await auth.signInWithPopup(provider);
-  } catch (error) {
-    // Note: when user closes popup, this is what happens:
-    //       _createError(this.auth, AuthErrorCode.POPUP_CLOSED_BY_USER)
+// export const signInWithGoogle = async () => {
+//   try {
+//     await auth.signInWithPopup(googleProvider);
+//   } catch (error) {
+//     // Note: when user closes popup, this is what happens:
+//     //       _createError(this.auth, AuthErrorCode.POPUP_CLOSED_BY_USER)
 
-    console.error('Something terrible happened while signing in with Google', error);
-  }
-};
+//     console.error('Something terrible happened while signing in with Google', error);
+//   }
+// };
 
 export const addCollectionAndDocuments = async (collectionKey, objectsToAdd) => {
   const collectionRef = firestore.collection(collectionKey);
