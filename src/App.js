@@ -1,21 +1,23 @@
 import React, { useEffect } from 'react';
-import { connect } from 'react-redux';
+import { useDispatch, useSelector } from 'react-redux';
 import { Redirect, Route, Switch } from 'react-router-dom';
-import { createStructuredSelector } from 'reselect';
 import './App.css';
 import Header from './components/header/header.component';
 import CheckoutPage from './pages/checkout/checkout.component';
 import HomePage from './pages/homepage/homepage.component';
 import ShopPage from './pages/shop/shop.component';
 import SignInAndSignUpPage from './pages/sign-in-and-sign-up/sign-in-and-sign-up.component';
-import * as userActions from './redux/user/user.actions';
+import { checkUserSession } from './redux/user/user.actions';
 import { selectCurrentUser } from './redux/user/user.selectors';
 // TODO: Final version of project converted to styled components: https://github.com/zhangmyihua/lesson-26-complete
 
-const App = ({ checkUserSession, currentUser }) => {
+const App = () => {
+  const currentUser = useSelector(selectCurrentUser);
+  const dispatch = useDispatch();
+
   useEffect(() => {
-    checkUserSession();
-  }, [checkUserSession]);
+    dispatch(checkUserSession());
+  }, [dispatch]);
 
   return (
     <div>
@@ -34,12 +36,12 @@ const App = ({ checkUserSession, currentUser }) => {
   );
 };
 
-const mapStateToProps = createStructuredSelector({
-  currentUser: selectCurrentUser,
-});
+// const mapStateToProps = createStructuredSelector({
+//   currentUser: selectCurrentUser,
+// });
 
-const mapDispatchToProps = (dispatch) => ({
-  checkUserSession: () => dispatch(userActions.checkUserSession()),
-});
+// const mapDispatchToProps = (dispatch) => ({
+//   checkUserSession: () => dispatch(userActions.checkUserSession()),
+// });
 
-export default connect(mapStateToProps, mapDispatchToProps)(App);
+export default App;
