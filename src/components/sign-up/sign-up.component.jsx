@@ -30,7 +30,12 @@ class SignUp extends React.Component {
     }
 
     const { signUpUser } = this.props;
-    signUpUser(this.state);
+    const { displayName, email } = this.state;
+    signUpUser({
+      displayName,
+      email,
+      password,
+    });
   };
 
   handleChange = (event) => {
