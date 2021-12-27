@@ -9,6 +9,7 @@ import ShopPage from './pages/shop/shop.component';
 import SignInAndSignUpPage from './pages/sign-in-and-sign-up/sign-in-and-sign-up.component';
 import { checkUserSession } from './redux/user/user.actions';
 import { selectCurrentUser } from './redux/user/user.selectors';
+
 // TODO: Final version of project converted to styled components: https://github.com/zhangmyihua/lesson-26-complete
 
 const App = () => {
@@ -35,13 +36,5 @@ const App = () => {
     </div>
   );
 };
-
-// const mapStateToProps = createStructuredSelector({
-//   currentUser: selectCurrentUser,
-// });
-
-// const mapDispatchToProps = (dispatch) => ({
-//   checkUserSession: () => dispatch(userActions.checkUserSession()),
-// });
 
 export default App;
