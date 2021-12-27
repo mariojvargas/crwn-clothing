@@ -39,7 +39,10 @@
     "start": "react-scripts start",
     "build": "react-scripts build",
     "test": "react-scripts test",
-    "eject": "react-scripts eject"
+    "eject": "react-scripts eject",
+    "prettier:fixall": "npx prettier --config .prettierrc --write \"src/**/*{.js,.jsx,.html,.scss}\"",
+    "prettier:verify": "npx prettier --config .prettierrc --check \"src/**/*{.js,.jsx,.html,.scss}\"",
+    "checkstyle": "npm run prettier:verify"
   },
   "eslintConfig": {
     "extends": [
